@@ -1,0 +1,10 @@
+{
+  "extensionDescription": {
+    "message": "Skips silent parts in videos. Watch lectures and unedited videos ~1.5x faster.",
+    "description": "Description of the extension displayed in the browser's extension management page"
+  },
+  "toggleExtension": {
+    "message": "Toggle Jump Cutter on/off",
+    "description": "Description for the keyboard command to toggle the extension"
+  }
+}
