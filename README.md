@@ -31,6 +31,13 @@ But I believe this use case would be considered "fair use" anyway.
 
 Inspired by [this video](https://youtu.be/DQ8orIurGxw) by carykh.
 
+## What's New
+
+**Custom Fork Features:**
+- 🎯 **Time Skipped Display**: Shows actual time skipped in current video
+- ⏱️ **ETA to Complete**: Displays estimated time remaining and completion time
+- 🎨 **Simplified UI**: Cleaner interface focusing on what matters
+
 ## How it works
 
 Simple (mostly).
@@ -240,6 +247,27 @@ graph
 
 <!-- FYI this section is linked from CONTRIBUTING.md -->
 ## Build
+
+### Automated Builds (Recommended)
+
+This repository has automated builds set up via GitHub Actions. You can get pre-built extension packages:
+
+#### Download from Releases
+1. Go to the [Releases page](https://github.com/ak-47-brar/jumpcutter/releases)
+2. Download the latest release:
+   - `dist-chromium.zip` for Chrome/Edge/Brave
+   - `dist-gecko.zip` for Firefox
+
+#### Trigger a New Build
+1. Go to [Actions](https://github.com/ak-47-brar/jumpcutter/actions/workflows/build-and-release.yml)
+2. Click "Run workflow"
+3. Enter a version name (e.g., `v1.0.0`) or leave default
+4. Wait for the build to complete
+5. Download artifacts from the workflow run or the Releases page
+
+### Manual Build
+
+If you want to build it yourself:
 
 1. Install base tools:
     * [Node.js](https://nodejs.org/).
