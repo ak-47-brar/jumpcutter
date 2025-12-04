@@ -55,30 +55,48 @@ jobs:
           body: |
             ## Jump Cutter Extension - ${{ steps.version.outputs.VERSION }}
             
-            ### Changes
-            - Display video time skipped and ETA to complete
-            - Simplified UI showing current session metrics
-            - Improved time display formatting
+            ### ✨ Features
+            - **⏩ Skipped Time**: Shows time skipped in current video session
+            - **⏱️ ETA Display**: Estimated time to complete video with completion timestamp
+            - **💾 Lifetime Counter**: Total time saved since installation
+            - **Clean UI**: Simplified, easy-to-read interface
             
-            ### Installation
+            ### 📥 Installation
             
-            **Chrome/Edge/Brave:**
-            1. Download `dist-chromium.zip`
+            #### Chrome/Edge/Brave (Permanent Installation)
+            1. Download `dist-chromium.zip` below
+            2. Extract the zip file to a folder you won't delete
+            3. Open browser and go to:
+               - Chrome: `chrome://extensions/`
+               - Edge: `edge://extensions/`
+               - Brave: `brave://extensions/`
+            4. Enable "Developer mode" (toggle in top-right)
+            5. Click "Load unpacked"
+            6. Select the extracted folder
+            7. ✅ Extension installed!
+            
+            #### Firefox (Temporary Installation)
+            
+            **Note**: Unsigned extensions in Firefox are temporary and removed when browser closes.
+            
+            1. Download `dist-gecko.zip` below
             2. Extract the zip file
-            3. Go to `chrome://extensions/` (or `edge://extensions/`)
-            4. Enable "Developer mode"
-            5. Click "Load unpacked" and select the extracted folder
+            3. Open Firefox and go to: `about:debugging#/runtime/this-firefox`
+            4. Click "Load Temporary Add-on..."
+            5. Navigate to extracted folder and select `manifest.json`
+            6. ✅ Extension loaded (until Firefox closes)
             
-            **Firefox:**
-            1. Download `dist-gecko.zip`
-            2. Extract the zip file
-            3. Go to `about:debugging#/runtime/this-firefox`
-            4. Click "Load Temporary Add-on"
-            5. Select the `manifest.json` file from the extracted folder
+            **For Permanent Firefox Installation**:
+            - Use [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) or [Firefox Nightly](https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly)
+            - Set `xpinstall.signatures.required` to `false` in `about:config`
+            - Or wait for official Firefox Add-ons store release
             
-            ### What's Included
-            - `dist-chromium.zip` - Chrome/Edge/Brave compatible extension
-            - `dist-gecko.zip` - Firefox compatible extension
+            ### 📦 Downloads
+            - `dist-chromium.zip` - Chrome/Edge/Brave (permanent)
+            - `dist-gecko.zip` - Firefox (temporary unless unsigned installs enabled)
+            
+            ### 🔧 Build Info
+            Built with Node.js 18 and Webpack 5
           files: |
             dist-chromium.zip
             dist-gecko.zip
@@ -88,13 +106,13 @@ jobs:
       - name: Upload Chrome build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: chromium-extension
+          name: chromium-extension-${{ steps.version.outputs.VERSION }}
           path: dist-chromium.zip
           retention-days: 30
 
       - name: Upload Firefox build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: firefox-extension
+          name: firefox-extension-${{ steps.version.outputs.VERSION }}
           path: dist-gecko.zip
           retention-days: 30
